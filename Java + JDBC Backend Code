@@ -6,8 +6,8 @@ import java.util.Scanner;
 public class proj {
     static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
     static final String DB_URL = "jdbc:mysql://localhost:3306/Vulcynyx?useSSL=false&allowPublicKeyRetrieval=true";
-    static final String USER = "root";
-    static final String PASS = "root";
+    static final String USER = "****";
+    static final String PASS = "****";
 
     public static void main(String[] args) {
         // Test connection first
@@ -59,22 +59,22 @@ public class proj {
 
         try {
             Class.forName(JDBC_DRIVER);
-            System.out.println("✓ JDBC Driver loaded successfully!");
+            System.out.println("JDBC Driver loaded successfully!");
         } catch (ClassNotFoundException e) {
-            System.out.println("✗ JDBC Driver NOT found!");
+            System.out.println("JDBC Driver NOT found!");
             System.out.println("Solution: Add mysql-connector-j-8.2.0.jar to classpath");
             return false;
         }
 
         try (Connection conn = DriverManager.getConnection(DB_URL, USER, PASS)) {
-            System.out.println("✓ Connection successful!");
+            System.out.println("Connection successful!");
             DatabaseMetaData metaData = conn.getMetaData();
             System.out.println("Database: " + metaData.getDatabaseProductName());
             System.out.println("Version: " + metaData.getDatabaseProductVersion());
             System.out.println("=================================\n");
             return true;
         } catch (SQLException e) {
-            System.out.println("✗ Connection failed!");
+            System.out.println("Connection failed!");
             System.out.println("Error: " + e.getMessage());
             return false;
         }
@@ -195,7 +195,7 @@ public class proj {
 
             int rowsAffected = pstmt.executeUpdate();
             if (rowsAffected > 0) {
-                System.out.println("✓ Product added successfully!");
+                System.out.println("Product added successfully!");
             }
         } catch (SQLException e) {
             handleSQLException("inserting product", e);
@@ -454,9 +454,9 @@ public class proj {
 
             int rowsAffected = pstmt.executeUpdate();
             if (rowsAffected > 0) {
-                System.out.println("✓ Product updated successfully!");
+                System.out.println("Product updated successfully!");
             } else {
-                System.out.println("✗ Product ID not found.");
+                System.out.println("Product ID not found.");
             }
 
         } catch (SQLException e) {
@@ -483,9 +483,9 @@ public class proj {
 
             int rowsAffected = pstmt.executeUpdate();
             if (rowsAffected > 0) {
-                System.out.println("✓ Product deleted successfully!");
+                System.out.println("Product deleted successfully!");
             } else {
-                System.out.println("✗ Product ID not found.");
+                System.out.println("Product ID not found.");
             }
 
         } catch (SQLException e) {
@@ -543,7 +543,7 @@ public class proj {
             }
 
             if (!hasData) {
-                System.out.println("✓ All products have sufficient stock!");
+                System.out.println("All products have sufficient stock!");
             }
 
             rs.close();
@@ -619,7 +619,7 @@ public class proj {
 
             int rowsAffected = pstmt.executeUpdate();
             if (rowsAffected > 0) {
-                System.out.println("✓ Customer added successfully!");
+                System.out.println("Customer added successfully!");
             }
 
         } catch (SQLException e) {
@@ -701,9 +701,9 @@ public class proj {
 
             int rowsAffected = pstmt.executeUpdate();
             if (rowsAffected > 0) {
-                System.out.println("✓ Customer deleted successfully!");
+                System.out.println("Customer deleted successfully!");
             } else {
-                System.out.println("✗ Customer ID not found.");
+                System.out.println("Customer ID not found.");
             }
 
         } catch (SQLException e) {
@@ -809,13 +809,13 @@ public class proj {
 
             int rowsAffected = pstmt.executeUpdate();
             if (rowsAffected > 0) {
-                System.out.println("✓ Campaign added successfully!");
+                System.out.println("Campaign added successfully!");
             }
 
         } catch (SQLException e) {
             handleSQLException("inserting campaign", e);
         } catch (IllegalArgumentException e) {
-            System.out.println("✗ Invalid date format. Use YYYY-MM-DD");
+            System.out.println("Invalid date format. Use YYYY-MM-DD");
         }
     }
 
@@ -857,9 +857,9 @@ public class proj {
 
             int rowsAffected = pstmt.executeUpdate();
             if (rowsAffected > 0) {
-                System.out.println("✓ Campaign deleted successfully!");
+                System.out.println("Campaign deleted successfully!");
             } else {
-                System.out.println("✗ Campaign ID not found.");
+                System.out.println("Campaign ID not found.");
             }
 
         } catch (SQLException e) {
@@ -919,13 +919,13 @@ public class proj {
 
             int rowsAffected = pstmt.executeUpdate();
             if (rowsAffected > 0) {
-                System.out.println("✓ Transaction added successfully!");
+                System.out.println("Transaction added successfully!");
             }
 
         } catch (SQLException e) {
             handleSQLException("inserting transaction", e);
         } catch (IllegalArgumentException e) {
-            System.out.println("✗ Invalid date format. Use YYYY-MM-DD");
+            System.out.println("Invalid date format. Use YYYY-MM-DD");
         }
     }
 
@@ -1345,7 +1345,7 @@ public class proj {
 
             int rowsAffected = pstmt.executeUpdate();
             if (rowsAffected > 0) {
-                System.out.println("✓ Advertisement added successfully!");
+                System.out.println("Advertisement added successfully!");
             }
 
         } catch (SQLException e) {
@@ -1406,7 +1406,7 @@ public class proj {
             }
 
             if (!hasData) {
-                System.out.println("✓ No ads running at loss!");
+                System.out.println("No ads running at loss!");
             }
 
             System.out.println("=".repeat(65));
@@ -1423,7 +1423,7 @@ public class proj {
                 System.out.print(prompt);
                 return sc.nextInt();
             } catch (Exception e) {
-                System.out.println("✗ Invalid input. Please enter a valid number.");
+                System.out.println("Invalid input. Please enter a valid number.");
                 sc.nextLine(); // clear buffer
             }
         }
@@ -1435,14 +1435,14 @@ public class proj {
                 System.out.print(prompt);
                 return sc.nextDouble();
             } catch (Exception e) {
-                System.out.println("✗ Invalid input. Please enter a valid number.");
+                System.out.println("Invalid input. Please enter a valid number.");
                 sc.nextLine(); // clear buffer
             }
         }
     }
 
     private static void handleSQLException(String operation, SQLException e) {
-        System.out.println("\n✗ Error while " + operation + ":");
+        System.out.println("\nError while " + operation + ":");
         System.out.println("SQL State: " + e.getSQLState());
         System.out.println("Error Code: " + e.getErrorCode());
         System.out.println("Message: " + e.getMessage());
